@@ -1,3 +1,4 @@
+import logging
 import os
 from datetime import datetime, timedelta
 
@@ -51,6 +52,15 @@ def get_energy_measurements(
 
 
 if __name__ == "__main__":
+    handler = logging.StreamHandler()
+    handler.setLevel(logging.INFO)
+
+    formatter = logging.Formatter(
+        fmt="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    handler.setFormatter(fmt=formatter)
+    LOGGER.addHandler(hdlr=handler)
+
     today = datetime.now()
     yesterday = today - timedelta(days=4)
 
@@ -76,5 +86,5 @@ if __name__ == "__main__":
         selenium_url=selenium_url,
         to_time=offset(target_time=today),
     )
-    # for date, from_grid, to_grid in measurements:
-    #     print(f"date: {date} | from_grid: {from_grid} | to_grid: {to_grid}")
+    for date, from_grid, to_grid in measurements:
+        LOGGER.info(f"date: {date} | from_grid: {from_grid} | to_grid: {to_grid}")

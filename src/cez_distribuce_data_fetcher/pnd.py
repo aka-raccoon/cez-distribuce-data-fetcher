@@ -140,9 +140,7 @@ def get_measurements(browser: Remote) -> list[tuple[str, str, str]]:
                 continue
             to_grid_div = row.find_element(by=By.XPATH, value=".//td[3]/div")
             to_grid = get_measurement(div=to_grid_div, date=date)
-            print(date, from_grid, to_grid)
             measurements.append((date, from_grid, to_grid))
-        print()
     return measurements
 
 
