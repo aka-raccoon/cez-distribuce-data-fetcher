@@ -1,6 +1,6 @@
 [project]
 name = "cez-distribuce-data-fetcher"
-version = "0.0.1"
+version = "0.0.2"
 description = "Fetches energy data from the CEZ Distribuce PND website"
 authors = [
     { name = "aka-raccoon", email = "42897550+aka-raccoon@users.noreply.github.com" },
